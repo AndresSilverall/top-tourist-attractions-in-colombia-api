@@ -1,0 +1,24 @@
+# Carpeta de dependencias del proyecto
+/node_modules
+
+# Archivo de configuración local de VSCode 
+.vscode/
+
+# Archivo de registros y archivos de salida 
+/logs
+/output
+
+# Carpeta de archivos de caché 
+/cache
+
+# Archivos de respaldo de Visual Studio Code
+.vscode/
+
+# Carpetas y archivos temporales
+/tmp
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+

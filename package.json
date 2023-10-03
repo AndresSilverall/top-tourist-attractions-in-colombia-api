@@ -1,0 +1,22 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "\"Api basada en rest que permite listar top lugares turisticos de colombia\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndresSilverall/top-tourist-attractions-in-colombia-api.git"
+  },
+  "author": "Andres Silvera",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AndresSilverall/top-tourist-attractions-in-colombia-api/issues"
+  },
+  "homepage": "https://github.com/AndresSilverall/top-tourist-attractions-in-colombia-api#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
