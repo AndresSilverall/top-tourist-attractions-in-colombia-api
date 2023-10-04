@@ -21,19 +21,12 @@ exports.getAllData = async (req, res) => {
 
 exports.getPlaceByID = async (req, res) => {
     try {
-        const getPlace = await Places.findById(req.params.id)
+        const getPlace = await Places.findById({_id:req.params.id})
+				await res.json(getPlace).status(200)
 
-				if (!getPlace) {
-						res.status(404).json({
-							"message": "Place not found!"
-						})
-				} else {
-					await res.json(getPlace).status(200)
-				}
-      
     } catch (err) {
         res.status(404).json({
-            "message": "An error occurred while getting the place!"
+            "message": "An error occurred while getting the place!" 
         })
     }  
 }
@@ -49,27 +42,19 @@ exports.addNewPlace = async (req, res) => {
 
 exports.updatePLace = async (req, res) => {
 
-	const getPlaceById = res.params.id;
+			const getPlaceById = req.params.id;
+			const data = await Places.findByIdAndUpdate({ _id: req.params.id }, {
+				name: req.body.name,
+				location: req.body.location,
+				city: req.body.city,
+				score: req.body.score
+			}, {lean:true})
 
-		try {
-				if (!getPlaceById) {
-						res.status(404).json({
-						"message": "Error, place not found!"
-					})
-				} else {
-						const data = await Places.findOneAndUpdate(getPlaceById, {
-						"name": req.body.name,
-						"city": req.body.city,
-						"location": req.body.location,
-						"score": req.body.score
-					})
-				}
-		} catch(err) {
-				res.json({
-						"message": "An error occurred while getting the place!"
+			res.status(200).json({
+				"message": "Place updated successfully!"
 			})
 	}
-}
+
 
 
 exports.deletePlace = async (req, res) => {
@@ -78,7 +63,7 @@ exports.deletePlace = async (req, res) => {
         const getplaceId = await Places.findById(req.params.id)
 
 				if (!getplaceId) {
-						return res.status(404).josn({
+						return res.status(404).json({
 							"message": "Error, place not found!"
 						})
 
