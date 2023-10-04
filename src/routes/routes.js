@@ -4,7 +4,7 @@ const router = express.Router();
 
 
 // llamar al controlador que se encarga de mostrar todos los lugares.
-router.get("/", dataConroller.showAllTouristPLaces)
+router.get("/", dataConroller.getAllData)
 router.get("/:id", dataConroller.getPLaceByid)
 router.post("/", dataConroller.addplace)
 

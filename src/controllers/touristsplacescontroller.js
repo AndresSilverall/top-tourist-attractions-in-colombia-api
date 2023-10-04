@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const topPlaces = require("../models/places");
 
 
 const app = express()
@@ -27,7 +28,18 @@ const places = [
     }
 ]
 
-console.log(places.length);
+
+
+exports.getAllData = (req, res) => {
+    try {
+        const places = topPlaces.find()
+        res.json(places)
+    }
+
+    catch (err) {
+        res.status(500).json({ message: 'Error al obtener los lugares' });
+    }
+}
 
 exports.showAllTouristPLaces = (req, res) => {
     res.json(places)
