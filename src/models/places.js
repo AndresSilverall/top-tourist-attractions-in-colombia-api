@@ -1,6 +1,6 @@
-const mongose = require("mongoose");
+const mongoose = require("mongoose");
 
-const placesSchema = new mongose.Schema({
+const TopPlaces = new mongoose.Schema({
     name: {
 			type: String,
     },
@@ -14,3 +14,6 @@ const placesSchema = new mongose.Schema({
 			enum: [1, 2, 3, 4, 5]
 		}
 });
+
+
+module.exports = mongoose.model('PLaces', TopPlaces);

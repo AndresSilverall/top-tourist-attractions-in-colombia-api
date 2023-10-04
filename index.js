@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const router = require("./src/routes/routes");
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/top-places", {useNewUrlParser: true})
+mongoose.connect("mongodb://localhost:27017/places", {useNewUrlParser: true})
 
 const db = mongoose.connection;
 
