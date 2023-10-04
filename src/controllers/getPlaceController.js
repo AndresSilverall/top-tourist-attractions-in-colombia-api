@@ -8,12 +8,10 @@ exports.getPlaceByID = async (req, res) => {
     try {
         const getPlace = await Places.findById(req.params.id)
         res.json(getPlace)
-    }
 
-    catch (err) {
+    } catch (err) {
         res.status(404).json({
             "Message": "Place not found!"
         })
-    }
-    
+    }  
 }
