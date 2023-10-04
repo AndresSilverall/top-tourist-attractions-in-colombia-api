@@ -1,15 +1,17 @@
 const express = require("express");
-const dataConroller = require("../controllers/touristsplacescontroller");
-const getPLaceController = require("../controllers/getPlaceController")
-const addPlaceControler = require("../controllers/addPlaceControler")
-const deletePlace = require("../controllers/deletePlaceController")
+const placesController = require("../controllers/placesController");
+
+
+// manejador de rutas
 const router = express.Router();
 
 
 // llamar al controlador que se encarga de mostrar todos los lugares.
-router.get("/", dataConroller.getAllData)
-router.get("/:id", getPLaceController.getPlaceByID)
-router.post("/", addPlaceControler.addNewPlace)
-router.delete("/:id", deletePlace.deletePlace)
+router.get("/", placesController.getAllData)
+router.get("/:id", placesController.getPlaceByID)
+router.post("/", placesController.addNewPlace)
+router.put("/:d")
+router.delete("/:id", placesController.deletePlace)
+
 
 module.exports = router;
