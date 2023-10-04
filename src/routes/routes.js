@@ -10,7 +10,7 @@ const router = express.Router();
 router.get("/", placesController.getAllData)
 router.get("/:id", placesController.getPlaceByID)
 router.post("/", placesController.addNewPlace)
-router.put("/:d")
+router.put("/:d", placesController.updatePLace)
 router.delete("/:id", placesController.deletePlace)
 
 

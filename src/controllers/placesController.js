@@ -1,5 +1,6 @@
 const express = require("express");
 const Places = require("../models/places");
+const { get } = require("mongoose");
 
 
 const app = express()
@@ -11,10 +12,9 @@ exports.getAllData = async (req, res) => {
         res.json(places)
 
     } catch (err) {
-        res.status(500).json(
-            { 
-                message: 'Error al obtener los lugares' 
-      	});
+        res.status(500).json({ 
+        		"message": 'An error occurred while  the place!' 
+      	})
     }
 }
 
@@ -22,11 +22,18 @@ exports.getAllData = async (req, res) => {
 exports.getPlaceByID = async (req, res) => {
     try {
         const getPlace = await Places.findById(req.params.id)
-        res.json(getPlace)
 
+				if (!getPlace) {
+						res.status(404).json({
+							"message": "Place not found!"
+						})
+				} else {
+					await res.json(getPlace).status(200)
+				}
+      
     } catch (err) {
         res.status(404).json({
-            "Message": "Place not found!"
+            "message": "An error occurred while getting the place!"
         })
     }  
 }
@@ -42,11 +49,28 @@ exports.addNewPlace = async (req, res) => {
 
 exports.updatePLace = async (req, res) => {
 
-	const getPlaceById = re.params.id;
-	const data = Places.updateOne(getPlaceById)
+	const getPlaceById = res.params.id;
 
-
+		try {
+				if (!getPlaceById) {
+						res.status(404).json({
+						"message": "Error, place not found!"
+					})
+				} else {
+						const data = await Places.findOneAndUpdate(getPlaceById, {
+						"name": req.body.name,
+						"city": req.body.city,
+						"location": req.body.location,
+						"score": req.body.score
+					})
+				}
+		} catch(err) {
+				res.json({
+						"message": "An error occurred while getting the place!"
+			})
+	}
 }
+
 
 exports.deletePlace = async (req, res) => {
 
@@ -61,14 +85,14 @@ exports.deletePlace = async (req, res) => {
 				} else {
 					await getplaceId.deleteOne()
 
-					res.status(200).josn({
+					res.status(200).json({
 						"message": "Place deleted successfully!"
 					})
 				}
         
     } catch (err) {
         res.status(404).json({
-              "message": "An error occurred while deleting the place"
+              "message": "An error occurred while deleting the place!"
         })
     }
 }
