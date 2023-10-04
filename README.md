@@ -30,7 +30,7 @@ Api basada en la arquitectura REST, la cual permite listar los top lugares turí
     <tr>
       <td style="border: 1px solid black;"><code>GET</code></td>
       <td style="border: 1px solid black;"><code>/places/</code></td>
-      <td style="border: 1px solid black;">Obtener todos los lugares turístico almacenados en la BD.</td>
+      <td style="border: 1px solid black;">Obtener todos los lugares turísticos almacenados en la BD.</td>
     </tr>
     <tr>
       <td style="border: 1px solid black;"><code>POST</code></td>
@@ -49,3 +49,30 @@ Api basada en la arquitectura REST, la cual permite listar los top lugares turí
     </tr>
     <tr>
 </table>
+
+
+# Demo de API
+
+#### Obtener todos los lugares turísticos
+
+![get_places](assets/get_places.gif)
+
+
+#### Obtener un lugar turístico en especifico a través de su ID
+
+![get_place_detail](assets/get_place_detail.gif)
+
+
+#### Almacenar un lugar turístico en la Base de datos
+
+![add_place](assets/add_place.gif)
+
+
+#### Actualizar un lugar turístico 
+
+![update_place](assets/update_place.gif)
+
+
+#### Eliminar un lugar turístico a través de su ID
+
+![delete_place](assets/delete_place.gif)
