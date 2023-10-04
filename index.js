@@ -3,14 +3,20 @@ const bodyParser = require("body-parser");
 const router = require("./src/routes/routes");
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/places", {useNewUrlParser: true})
+// MongoDB connection
+mongoose.connect("mongodb://localhost:27017/places", {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useFindAndModify: false
+    
+    }).then((db) => {
+        console.log("Database mongoDB connected!")
+
+    }).catch((err) => {
+        console.log(err)
+    })
 
 const db = mongoose.connection;
-
-db.on('error', console.error.bind(console, 'Error de conexión a MongoDB:'));
-db.once('open', () => {
-  console.log('Conectado a MongoDB');
-});
 
 
 const app = express()
@@ -18,11 +24,12 @@ const app = express()
 // middleware para analizar las solicitudes en forma JSON
 app.use(bodyParser.json())
 
+// routes
 app.use("/places", router)
 
 app.get("/", (req, res) => {
     res.json({
-        "prgrammer": "andres"
+        "API REST": "Top Tourists places"
     })
 })
 
