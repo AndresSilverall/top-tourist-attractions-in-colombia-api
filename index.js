@@ -3,13 +3,12 @@ const bodyParser = require("body-parser");
 const router = require("./src/routes/routes");
 const mongoose = require("mongoose");
 
+
 // MongoDB connection
 mongoose.connect("mongodb://localhost:27017/places", {
-        useNewUrlParser: true,
-        useCreateIndex: true,
-        useFindAndModify: false
-    
-    }).then((db) => {
+        useNewUrlParser: true, 
+        
+    }).then(() => {
         console.log("Database mongoDB connected!")
 
     }).catch((err) => {
