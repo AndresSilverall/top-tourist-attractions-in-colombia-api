@@ -15,4 +15,37 @@ Api basada en la arquitectura REST, la cual permite listar los top lugares turí
 
 1. Clona este repositorio: `https://github.com/AndresSilverall/top-tourist-attractions-in-colombia-api.git`
 2. Navega a la carpeta del proyecto: `cd top-tourist-attractions-in-colombia-api`
-3. Instlar todas las depedencias `node npm install`
+3. Instalar todas las depedencias con: `npm install`
+5. Iniciar servidor con `npm start`
+
+
+# Métodos establecidos para la API
+
+<table style="border-collapse: collapse; width: 100%;">
+    <tr>
+      <td style="border: 1px solid black;">Método</td>
+      <td style="border: 1px solid black;">Endpoint</td>
+      <td style="border: 1px solid black;">Descripción </td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black;"><code>GET</code></td>
+      <td style="border: 1px solid black;"><code>/places/</code></td>
+      <td style="border: 1px solid black;">Obtener todos los lugares turístico almacenados en la BD.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black;"><code>POST</code></td>
+      <td style="border: 1px solid black;"><code>/places/:id</code></td>
+      <td style="border: 1px solid black;">Obtener detalles de un lugar turístico.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black;"><code>PUT</code></td>
+      <td style="border: 1px solid black;"><code>/places/:id</code></td>
+      <td style="border: 1px solid black;">Actualizar un lugar turístico a través de su ID.</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black;"><code>DELETE</code></td>
+      <td style="border: 1px solid black;"><code>/places/:id</code></td>
+      <td style="border: 1px solid black;">Eliminar un lugar turístico a través de su ID.</td>
+    </tr>
+    <tr>
+</table>
