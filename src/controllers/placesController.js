@@ -33,17 +33,26 @@ exports.getPlaceByID = async (req, res) => {
 
 
 exports.addNewPlace = async (req, res) => {
+		try {
+			const addPlace = await Places.create(req.body)
+			await res.status(201).json({
+				"message": "New place added!"
+			})
 
-    const insertPlace = Places.create(req.body)
-    res.json(insertPlace)
-
+		} catch (err) {
+			res.status(404).json({
+					"message": "An error occurred while getting the place!" 
+			})
+	}  
 }
 
 
 exports.updatePLace = async (req, res) => {
 
+		try {
+
 			const getPlaceById = req.params.id;
-			const data = await Places.findByIdAndUpdate({ _id: req.params.id }, {
+			const data = await Places.findByIdAndUpdate({ _id: getPlaceById }, {
 				name: req.body.name,
 				location: req.body.location,
 				city: req.body.city,
@@ -53,8 +62,13 @@ exports.updatePLace = async (req, res) => {
 			res.status(200).json({
 				"message": "Place updated successfully!"
 			})
-	}
 
+		} catch (err) {
+					res.status(404).json({
+						"message": "An error occurred while updating the place!"
+					})
+		}
+	}
 
 
 exports.deletePlace = async (req, res) => {
